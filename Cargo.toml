@@ -1,8 +1,18 @@
 [package]
 name = "gelf-serialize"
 version = "0.1.0"
-authors = ["caderrik <caderrik@gmail.com>"]
+authors = ["Cedric Dumay <cedric.dumay@gmail.com>"]
+license = "MIT"
+description = "A GELF serialization framework"
+repository = "https://github.com/cdumay/gelf-serialize-rs"
+keywords = ["serde", "serialization", "gelf"]
+categories = ["encoding"]
+readme = "README.md"
+include = ["Cargo.toml", "src/*.rs", "README.md","LICENSE-MIT"]
 
 [dependencies]
 serde = "1.0"
 serde_derive = "1.0"
+
+[features]
+default = []
