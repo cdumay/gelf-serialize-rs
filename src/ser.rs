@@ -1,11 +1,7 @@
 use serde::ser::{self, Serialize};
 use error::{Error, Result};
-use ::GELF_FIELDS;
 
-pub struct Serializer {
-    // This string starts empty and JSON is appended as values are serialized.
-    output: String,
-}
+const GELF_FIELDS: [&'static str; 9] = ["version", "host", "short_message", "full_message", "timestamp", "level", "facility", "line", "file"];
 
 pub fn to_string<T>(value: &T) -> Result<String>
     where T: Serialize
@@ -13,6 +9,11 @@ pub fn to_string<T>(value: &T) -> Result<String>
     let mut serializer = Serializer { output: String::new() };
     value.serialize(&mut serializer)?;
     Ok(serializer.output)
+}
+
+pub struct Serializer {
+    // This string starts empty and JSON is appended as values are serialized.
+    output: String,
 }
 
 impl<'a> ser::Serializer for &'a mut Serializer {
